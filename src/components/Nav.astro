@@ -1,0 +1,43 @@
+---
+import { PhoneIcon } from "lucide-react";
+import { PhoneButton } from "~/components/phone-button";
+---
+
+<header
+	x-data="{ isScrolled: false }"
+	x-init="
+		isScrolled = document.documentElement.scrollTop > 68;
+    window.addEventListener('scroll', () => {
+      isScrolled = document.documentElement.scrollTop > 68;
+    }, { passive: true });
+  "
+	x-cloak
+	class="w-full flex justify-center items-center px-3 text-lg text-white z-9999 absolute top-0 transition-all ease-linear"
+	:class="[isScrolled ? 'fixed py-4 bg-neutral-950 shadow-md' : 'bg-transparent py-5']"
+>
+	<nav>
+		<ul
+			class="flex gap-8 justify-center"
+			:class="[isScrolled ? '-ml-20 md:-ml-0' : '']"
+		>
+			<li>
+				<a href="#services">Services</a>
+			</li>
+			<li>
+				<a href="#about">About</a>
+			</li>
+			<li>
+				<a href="#trust">Reviews</a>
+			</li>
+		</ul>
+	</nav>
+	<PhoneButton
+		x-show="isScrolled"
+		x-cloak
+		x-transition
+		className="shadow-none absolute right-10 p-0 md:py-2 md:px-6 size-10 md:size-auto"
+	>
+		<PhoneIcon className="size-5" />
+		<span class="hidden md:block">Call Us</span>
+	</PhoneButton>
+</header>

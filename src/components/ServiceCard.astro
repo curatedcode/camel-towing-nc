@@ -1,0 +1,46 @@
+---
+import { cn } from "~/lib/utils";
+
+interface Props {
+	title: string;
+	description: string;
+	imgSrc: string;
+	layout?: "left-img" | "right-img";
+	class?: string;
+}
+
+const {
+	title,
+	description,
+	imgSrc,
+	layout = "left-img",
+	class: className,
+} = Astro.props;
+---
+
+<div
+	class={cn(
+		"rounded-md shadow ring grid grid-cols-3 bg-card text-card-foreground ring-neutral-300/80 overflow-hidden md:flex md:flex-col",
+		className,
+	)}
+>
+	<img
+		src={imgSrc}
+		class={cn(
+			"size-full object-cover ring ring-neutral-300/80 md:h-[280px] md:rounded-none md:col-start-1",
+			layout === "left-img"
+				? "rounded-l-md col-start-1"
+				: "rounded-r-md col-start-3 md:flex-col-reverse",
+		)}
+		loading="lazy"
+	/>
+	<div
+		class={cn(
+			"flex flex-col justify-start gap-2 p-4 pt-3 col-span-2 bg-card",
+			layout === "right-img" && "row-start-1 md:row-start-2",
+		)}
+	>
+		<span class="text-xl font-medium text-primary">{title}</span>
+		<p class="leading-tight text-base">{description}</p>
+	</div>
+</div>
