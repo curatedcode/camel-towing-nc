@@ -5,6 +5,7 @@ interface Props {
 	title: string;
 	description: string;
 	imgSrc: string;
+	imgAlt: string;
 	layout?: "left-img" | "right-img";
 	class?: string;
 }
@@ -13,6 +14,7 @@ const {
 	title,
 	description,
 	imgSrc,
+	imgAlt,
 	layout = "left-img",
 	class: className,
 } = Astro.props;
@@ -32,6 +34,7 @@ const {
 				? "rounded-l-md col-start-1"
 				: "rounded-r-md col-start-3 md:flex-col-reverse",
 		)}
+		alt={imgAlt}
 		loading="lazy"
 	/>
 	<div
