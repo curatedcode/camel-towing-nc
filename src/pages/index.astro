@@ -96,6 +96,13 @@ import Footer from "~/components/Footer.astro";
 		/>
 		<link
 			rel="preload"
+			href="/assets/fonts/montserrat-v31-latin-700.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="preload"
 			href="/assets/fonts/montserrat-v31-latin-800.woff2"
 			as="font"
 			type="font/woff2"
@@ -260,15 +267,13 @@ import Footer from "~/components/Footer.astro";
 					<div
 						class="relative z-10 flex flex-col items-center justify-center h-full text-center text-neutral-100 px-4"
 					>
-						<h2 class="text-4xl font-bold text-primary">Need a Tow?</h2>
+						<h2 class="text-4xl font-bold text-primary font-heading">
+							Need a Tow?
+						</h2>
 						<p class="mt-3 text-lg">
 							Call now and we’ll be on our way, anywhere in Greensboro.
 						</p>
-						<PhoneButton
-							className="bg-primary text-primary-foreground font-semibold mt-6"
-						>
-							(336) 947-2786
-						</PhoneButton>
+						<PhoneButton className="mt-6">(336) 947-2786</PhoneButton>
 					</div>
 				</section>
 			</div>
