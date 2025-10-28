@@ -11,7 +11,7 @@ import { PhoneButton } from "~/components/phone-button";
       isScrolled = document.documentElement.scrollTop > 68;
     }, { passive: true });
   "
-	x-cloak
+	x-cloak="true"
 	class="w-full flex justify-center items-center px-3 text-lg text-white z-9999 absolute top-0 transition-all ease-linear"
 	:class="[isScrolled ? 'fixed py-4 bg-neutral-950 shadow-md' : 'bg-transparent py-5']"
 >
@@ -33,8 +33,7 @@ import { PhoneButton } from "~/components/phone-button";
 	</nav>
 	<PhoneButton
 		x-show="isScrolled"
-		x-cloak
-		x-transition
+		x-cloak="true"
 		className="shadow-none absolute right-10 p-0 md:py-2 md:px-6 size-10 md:size-auto"
 	>
 		<PhoneIcon className="size-5" />
