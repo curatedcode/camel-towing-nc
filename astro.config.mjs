@@ -10,5 +10,5 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-	integrations: [alpinejs(), react()],
+	integrations: [alpinejs({ entrypoint: "./alpine.config" }), react()],
 });

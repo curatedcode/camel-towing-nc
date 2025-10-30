@@ -1,42 +1,95 @@
 ---
-import { PhoneIcon } from "lucide-react";
+import { MenuIcon, PhoneIcon, XIcon } from "lucide-react";
 import { PhoneButton } from "~/components/phone-button";
 ---
 
 <header
-	x-data="{ isScrolled: false }"
+	x-data="{ isScrolled: false, isExpanded: false }"
 	x-init="
 		isScrolled = document.documentElement.scrollTop > 68;
     window.addEventListener('scroll', () => {
       isScrolled = document.documentElement.scrollTop > 68;
     }, { passive: true });
+		window.addEventListener('resize', () => {
+			isExpanded = false
+		}, { passive: true })
   "
 	x-cloak="true"
-	class="w-full flex justify-center items-center px-3 text-lg text-white z-9999 absolute top-0 transition-all ease-linear"
-	:class="[isScrolled ? 'fixed py-4 bg-neutral-950 shadow-md' : 'bg-transparent py-5']"
+	class="w-full flex items-center px-3 text-lg text-white z-9999 absolute top-0 transition-all ease-linear md:justify-center"
+	:class="[isScrolled ? 'fixed py-4 bg-neutral-950 shadow-md md:py-5' : 'bg-transparent py-6', isExpanded && 'bg-neutral-950!']"
 >
 	<nav>
+		<button
+			type="button"
+			class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 md:hidden"
+			:class="isScrolled && 'mt-1.5'"
+			@click="isExpanded = !isExpanded"
+		>
+			<span class="sr-only">Open menu</span>
+			<MenuIcon className="size-6.5" :class="isExpanded && 'hidden'" />
+			<XIcon className="size-6.5" :class="!isExpanded && 'hidden'" />
+		</button>
+		<!-- Desktop -->
+		<ul class="gap-8 justify-center hidden md:flex">
+			<li>
+				<a
+					href="#services"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>Services</a
+				>
+			</li>
+			<li>
+				<a
+					href="#about"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>About</a
+				>
+			</li>
+			<li>
+				<a
+					href="#trust"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>Reviews</a
+				>
+			</li>
+		</ul>
+		<!-- Mobile -->
 		<ul
-			class="flex gap-8 justify-center"
-			:class="[isScrolled ? '-ml-20 md:-ml-0' : '']"
+			class="flex flex-col gap-6 w-full pt-4 px-3"
+			x-show="isExpanded"
+			x-cloak="true"
+			x-collapse
 		>
 			<li>
-				<a href="#services">Services</a>
+				<a
+					href="#services"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>Services</a
+				>
 			</li>
 			<li>
-				<a href="#about">About</a>
+				<a
+					href="#about"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>About</a
+				>
 			</li>
 			<li>
-				<a href="#trust">Reviews</a>
+				<a
+					href="#trust"
+					class="outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+					>Reviews</a
+				>
 			</li>
 		</ul>
 	</nav>
-	<PhoneButton
-		x-show="isScrolled"
-		x-cloak="true"
-		className="shadow-none absolute right-10 p-0 md:py-2 md:px-6 size-10 md:size-auto"
+	<div
+		class="absolute right-3 md:right-10"
+		:class="isScrolled ? 'top-4 md:top-3.5' : 'top-4.5'"
 	>
-		<PhoneIcon className="size-5" />
-		<span class="hidden md:block">Call Us</span>
-	</PhoneButton>
+		<PhoneButton className="shadow-none py-2 px-6">
+			<PhoneIcon className="size-5" />
+			<span>Call Us</span>
+		</PhoneButton>
+	</div>
 </header>
