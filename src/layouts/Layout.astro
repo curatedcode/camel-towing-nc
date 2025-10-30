@@ -1,0 +1,100 @@
+---
+import "~/styles/global.css";
+import Footer from "~/components/Footer.astro";
+import Nav from "~/components/Nav.astro";
+
+interface Props {
+	/**
+	 * The head title tag.
+	 *
+	 * title="404" will result in "404 - Camel Towing"
+	 */
+	title?: string;
+	hideNav?: boolean;
+}
+
+const props = Astro.props;
+const title = props.title ? `${props.title} - Camel Towing` : "Camel Towing";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta
+			name="description"
+			content="Fast, friendly towing and roadside assistance in Greensboro, North Carolina. Locally owned and trusted by 100+ drivers."
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#FF6A00" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<link rel="manifest" href="/manifest.json" />
+		<script
+			is:inline
+			async
+			src="https://unpkg.com/pwacompat"
+			cross-origin="anonymous"></script>
+
+		<title>{title}</title>
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@iamnotzack" />
+		<meta name="twitter:url" content="https://cameltowingnc.zackaryf.com" />
+		<meta name="twitter:title" content={title} />
+		<meta
+			name="twitter:description"
+			content="Fast, friendly towing and roadside assistance in Greensboro, North Carolina. Locally owned and trusted by 100+ drivers."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://cameltowingnc.zackaryf.com/assets/icons/social-card.png"
+		/>
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta
+			property="og:description"
+			content="Fast, friendly towing and roadside assistance in Greensboro, North Carolina. Locally owned and trusted by 100+ drivers."
+		/>
+		<meta property="og:site_name" content={title} />
+		<meta property="og:url" content="https://cameltowingnc.zackaryf.com" />
+		<meta
+			property="og:image"
+			content="https://cameltowingnc.zackaryf.com/assets/icons/social-card.png"
+		/>
+
+		<!-- Apple touch icon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="/assets/icons/favicon-120x120.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="/assets/icons/favicon-152x152.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="167x167"
+			href="/assets/icons/favicon-167x167.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/assets/icons/favicon-180x180.png"
+		/>
+
+		<slot name="head" />
+	</head>
+	<body>
+		{props.hideNav ? null : <Nav />}
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
