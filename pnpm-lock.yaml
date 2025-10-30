@@ -23,15 +23,6 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.16
         version: 4.1.16(vite@6.4.1(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2))
-      '@types/alpinejs':
-        specifier: ^3.13.11
-        version: 3.13.11
-      '@types/react':
-        specifier: ^19.2.2
-        version: 19.2.2
-      '@types/react-dom':
-        specifier: ^19.2.2
-        version: 19.2.2(@types/react@19.2.2)
       alpinejs:
         specifier: ^3.15.0
         version: 3.15.0
@@ -72,9 +63,18 @@ importers:
       '@biomejs/biome':
         specifier: 2.3.0
         version: 2.3.0
+      '@types/alpinejs':
+        specifier: ^3.13.11
+        version: 3.13.11
       '@types/alpinejs__collapse':
         specifier: ^3.13.4
         version: 3.13.4
+      '@types/react':
+        specifier: ^19.2.2
+        version: 19.2.2
+      '@types/react-dom':
+        specifier: ^19.2.2
+        version: 19.2.2(@types/react@19.2.2)
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
