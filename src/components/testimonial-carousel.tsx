@@ -115,10 +115,10 @@ function CarouselItem({
 						target="_blank"
 						rel="noopener"
 						referrerPolicy="no-referrer"
-						title="Open review"
+						aria-label="Open review"
 						className="ml-auto flex size-10 items-center justify-center"
 					>
-						<GoogleLogoIcon className="size-6" />
+						<GoogleLogoIcon className="size-6" aria-hidden="true" />
 					</a>
 				</div>
 			</div>
